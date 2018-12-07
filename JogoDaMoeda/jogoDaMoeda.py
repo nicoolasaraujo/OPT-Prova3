@@ -60,7 +60,7 @@ def main():
   '''Diferença 3 e capInicial'''
   print('Diferença 3 e capInicial')
   capInicial = 5 
-  print(capInicial[0])
+  # print(capInicial[0])
   exp = [umaJogadaCapInicial(capInicial) for _ in range(NE)]
   print(str(sum(exp)/(NE*1.0)))  
 
