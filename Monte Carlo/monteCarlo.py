@@ -32,13 +32,12 @@ def RandomWalk():
       x += random.randint(0, RESTRICAOX - x)
     elif direcao == 'OESTE':
       x -= random.randint(0,  x)
-
+  
     novoZ = executaMonteCarlo(x,y)
     if z >= novoZ:
       break
     else:
       z = novoZ
-
   return z
 
 def main():

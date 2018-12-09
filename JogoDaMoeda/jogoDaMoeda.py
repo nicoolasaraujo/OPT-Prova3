@@ -1,21 +1,20 @@
 import random as R
 # import threading from threading
-NE=25
+NE=1000
 ORCAMENTO = 0
 
-def umaJogadaMoedaViciada(L=3):
+def umaJogadaMoedaViciada(vicio, L=3):
   s = 0
   gasto = 0
   while not abs(s) == L:
     r = R.random()
-    if r < 0.61:
+    if r < vicio:
       s -= 1
-      # print('Cara')
-    elif r >= 0.61:
+      # print('cara')
+    elif r >= vicio:
       s += 1
-      # print('Coroa')
+      # print('coroa')
     gasto += 1
-  # print(8-gasto)
   return 8-gasto
 
 def umaJogada(L=3):
@@ -45,7 +44,6 @@ def umaJogadaCapInicial(capInicial,L=3):
   return 8-gasto + capInicial # o resultado final será o quanto ele ganhou + o capital inicial
 
 def umaJogadaOrcamento(orcamento,L=2):
-  # print(orcamento)
   s = 0
   gasto = 0
   while ((not abs(s) == L) and (orcamento > 0)): #continua jogando até que a diferença seja maior que L e possua capInicial[0]
@@ -78,12 +76,34 @@ def main():
   #   print('Capital Inicial: {}'.format(capInicial))
   #   exp = [umaJogadaCapInicial(capInicial) for _ in range(NE)]
   #   print(str(sum(exp)/(NE*1.0)))  
-  for i in range(1,26):
-    print('Orçamento: {}'.format(i), end="\t")
-    # print('Orçamento: {}'.format(orcamento))
-    exp = [umaJogadaOrcamento(i) for _ in range(NE)]
-    print(str(25 * (sum(exp)/(NE*1.0))))
+  
+  # for i in range(1,26):
+  #   print('Orçamento: {}'.format(i), end="\t")
+  #   exp = [umaJogadaOrcamento(i) for _ in range(NE)]
+  #   print(str(25 * (sum(exp)/(NE*1.0))))
+  
+  # print(umaJogadaMoedaViciada(0.5))
 
+    # exp = [umaJogadaMoedaViciada(0.8) for _ in range(NE)]
+    # print(str((sum(exp)/(NE*1.0))))
+    ultimaNegativa = None
+    percVicio = 0.5
+    pontoMudanca = None
+    for i in range(1, 51):
+      tempPerc = percVicio + i/100
+      exp = [umaJogadaMoedaViciada(tempPerc) for _ in range(NE)]
+      vlr = sum(exp)/(NE*1.0)
+      print('Percentual: {} \tResultado: {}'.format(round(tempPerc, 2),vlr))
+      if vlr < 0:
+        ultimaNegativa = tempPerc
+        pontoMudanca = None
+      else:
+        if ultimaNegativa and not pontoMudanca:
+          pontoMudanca = tempPerc
+      print('-------------------')
+
+    if ultimaNegativa:
+      print(pontoMudanca) 
 
 if __name__ =="__main__":
   main()
