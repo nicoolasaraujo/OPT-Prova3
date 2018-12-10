@@ -1,5 +1,5 @@
 import random as R
-# import threading from threading
+
 NE=1000
 ORCAMENTO = 0
 
@@ -10,10 +10,8 @@ def umaJogadaMoedaViciada(vicio, L=3):
     r = R.random()
     if r < vicio:
       s -= 1
-      # print('cara')
     elif r >= vicio:
       s += 1
-      # print('coroa')
     gasto += 1
   return 8-gasto
 
@@ -59,10 +57,10 @@ def umaJogadaOrcamento(orcamento,L=2):
   return 1
   
 def main():
-  # '''diferença de 3'''
-  # print('Vai executar diferença de 3')
-  # exp = [umaJogada() for _ in range(NE)]
-  # print(str(sum(exp)/(NE*1.0)))  
+  '''diferença de 3'''
+  print('Vai executar diferença de 3')
+  exp = [umaJogada() for _ in range(NE)]
+  print(str(sum(exp)/(NE*1.0)))  
 
   # '''diferença de 2'''
   # print('Vai executar diferença de 2')
@@ -77,10 +75,10 @@ def main():
   #   exp = [umaJogadaCapInicial(capInicial) for _ in range(NE)]
   #   print(str(sum(exp)/(NE*1.0)))  
   
-  # for i in range(1,26):
-  #   print('Orçamento: {}'.format(i), end="\t")
-  #   exp = [umaJogadaOrcamento(i) for _ in range(NE)]
-  #   print(str(25 * (sum(exp)/(NE*1.0))))
+  for i in range(1,26):
+    print('Orçamento: {}'.format(i), end="\t")
+    exp = [umaJogadaOrcamento(i) for _ in range(NE)]
+    print(str(sum(exp)))
   
   # print(umaJogadaMoedaViciada(0.5))
 

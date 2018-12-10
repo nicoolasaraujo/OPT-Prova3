@@ -1,6 +1,6 @@
 import random 
 
-NE = 10
+NE = 100000
 
 def selecionaCarro(portas):
     indiceCarro = random.randint(0,2)

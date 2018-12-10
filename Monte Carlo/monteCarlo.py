@@ -6,7 +6,6 @@ NE = 10000
 RESTRICAOX = 99953
 RESTRICAOY = 100015
 
-
 def defineCoordenadas():
   y = random.randrange(0, RESTRICAOY)
   x = random.randrange(0, RESTRICAOX)
@@ -17,7 +16,6 @@ def executaMonteCarlo(x=None, y=None):
     x,y = defineCoordenadas()
   z = math.sin(x/50000) + math.cos(y/30000)
   return z
-
 
 def RandomWalk():
   x,y = defineCoordenadas()
@@ -58,6 +56,5 @@ def main():
   print('Tempo despendido {}'.format(time.time() - tempoInicio))
   print('---------------------------------------')
   
-
 if __name__ =="__main__":
   main()
