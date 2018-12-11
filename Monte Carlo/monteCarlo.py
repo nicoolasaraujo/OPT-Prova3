@@ -17,7 +17,7 @@ def executaMonteCarlo(x=None, y=None):
   z = math.sin(x/50000) + math.cos(y/30000)
   return z
 
-def RandomWalk():
+def randomWalk():
   x,y = defineCoordenadas()
   z = executaMonteCarlo()
   while True:
@@ -51,7 +51,7 @@ def main():
   print('Execução Monte random walk')
   tempoInicio = time.time()
   '''Execução Monte random walk'''
-  exp = [RandomWalk() for _ in range(NE)]
+  exp = [randomWalk() for _ in range(NE)]
   print(str(max(exp)))
   print('Tempo despendido {}'.format(time.time() - tempoInicio))
   print('---------------------------------------')
